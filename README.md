@@ -1,72 +1,36 @@
 # 🛒 Ozon Product Parser
 
-Автоматический парсер карточек товаров с сайта Ozon (ozon.ru) с авторизацией через Gmail API и сохранением результатов в CSV/PostgreSQL.
-
-## 📋 Содержание
-
-- [Возможности](#-возможности)
-- [Архитектура](#-архитектура)
-- [Требования](#-требования)
-- [Установка](#-установка)
-
----
+Парсер карточек товаров с Ozon (ozon.ru) с авторизацией через cookies.
 
 ## ✨ Возможности
 
-### Основной функционал
-- 🔐 **Автоматическая авторизация** на data.ozon.ru через Selenium + Gmail API
-- 🍪 **Получение и сохранение cookies** для дальнейшего использования
-- 📊 **Парсинг карточек товаров** по списку SKU
-- 📁 **Сохранение в CSV** с поддержкой кириллицы (UTF-8-sig)
-- 📝 **Детальное логирование** всех этапов работы
+- 🔐 Авторизация через cookies
+- 📊 Парсинг по списку SKU
+- 📁 Сохранение в CSV и JSON
+- 🗄️ Опционально: PostgreSQL, ClickHouse
+- 📝 Детальное логирование
 
 ### Парсимые поля
-| Поле | Описание |
-|------|----------|
-| `sku` | Артикул товара |
-| `title` | Название товара |
-| `price` | Цена (число) |
-| `rating` | Рейтинг (число) |
-| `reviews_total` | Количество отзывов |
-| `cover_image` | Ссылка на главное изображение |
-| `photos_seller` | Количество фото в галерее |
-| `videos_seller` | Количество видео |
-| `color` | Цвет (если указан) |
-| `material` | Материал (если указан) |
-| `art_set` | Артикул производителя |
-| `has_rich_content` | Наличие rich-контента в описании |
-
----
-
----
+`sku`, `title`, `price`, `rating`, `reviews_total`, `cover_image`, `photos_seller`, `videos_seller`, `color`, `material`, `art_set`, `has_rich_content`
 
 ## 📦 Требования
 
-### Системные требования
-- **Python**: 3.9 или выше (рекомендуется 3.10+)
-- **Chrome браузер**: версия 120+
-- **ChromeDriver**: совместимый с версией Chrome
-- **ОС**: Windows 10/11, Linux (Ubuntu 20.04+), macOS 12+
+- Python 3.9+
+- Chrome браузер 120+
+- ChromeDriver (автоматически через webdriver-manager)
 
-### Зависимости
-Все зависимости указаны в `requirements.txt`:
+## 🚀 Быстрый старт
+
+### 1. Установка
 
 ```bash
-# Основные
-selenium>=4.15.0
-webdriver-manager>=4.0.1
-beautifulsoup4>=4.12.2
-lxml>=4.9.3
-requests>=2.31.0
-python-dotenv>=1.0.0
+# Клонирование
+git clone https://github.com/yourusername/ozon-parser.git
+cd ozon-parser
 
-# Google API
-google-api-python-client>=2.108.0
-google-auth-oauthlib>=1.1.0
-google-auth-httplib2>=0.1.1
+# Виртуальное окружение
+python -m venv .venv
+source .venv/bin/activate  # или .venv\Scripts\activate
 
-# Обработка данных
-pandas>=2.1.3
-numpy>=1.24.3
-
-## 🏗️ Архитектура
+# Установка зависимостей
+pip install -r requirements.txt
