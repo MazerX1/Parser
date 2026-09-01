@@ -25,8 +25,8 @@
 
 ```bash
 # Клонирование
-git clone https://github.com/yourusername/ozon-parser.git
-cd ozon-parser
+git clone https://github.com/MazerX1/Parser.git
+cd Parser
 
 # Виртуальное окружение
 python -m venv .venv
